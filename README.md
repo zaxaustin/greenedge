@@ -1,66 +1,74 @@
 # GreenEdge
 
-GreenEdge is a concept website that imagines a polished review ecosystem for New York's legal cannabis scene. The project now
-brings every prototype together into a cohesive experience:
+GreenEdge imagines a polished review and reservation ecosystem for New York's legal cannabis scene. The project now ships as an [Astro](https://astro.build/) application with Netlify-powered serverless APIs, automated accessibility audits, and privacy-friendly analytics hooks.
 
-- **Landing page (`index.html`)** – Highlights the platform vision, links to every interactive module, and spells out roadmap
-  priorities.
-- **NYC Dispensary Interface (`pages/review-interface.html`)** – Filter strains, spotlight trending releases, and peek at the
-  next set of enhancements.
-- **Smart Review System (`pages/review-system.html`)** – Walk through a scanner-powered review flow, log effects, and unlock
-  rewards.
-- **Harbor High Voyage Log (`pages/boat-reviews.html`)** – Capture boat club tastings and handle reservation requests.
-- **Weed Town Square (`pages/weed-town-square.html`)** – Rotate community prompts, vote on marquee events, and scan civic
-  updates.
-- **Micro-Grow Lab (`pages/growing-lab.html`)** – Simulate compliant home-grow decisions with day progression and plant care
-  mechanics.
+## 🚀 Quick start
 
-All pages share a common look and feel through `assets/styles.css` and lightweight JavaScript modules inside `assets/`.
-
-## Getting started
-
-This is a static project—open `index.html` in your browser to explore. Every linked page lives in the `pages/` directory and
-uses relative paths, so no build tools are required.
-
-```
-# From the project root
-open index.html            # macOS
-xdg-open index.html        # Linux
+```bash
+npm install
+npm run dev
 ```
 
-## Project structure
+The development server runs at <http://localhost:4321>. Environment variables can be configured in `.env` (see `.env.example`).
+
+### Available scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start Astro in development mode with hot reload. |
+| `npm run build` | Generate the production build in `dist/`. |
+| `npm run preview` | Serve the production build locally. |
+| `npm run test` | Type-check and validate the project via `astro check`. |
+| `npm run accessibility` | Execute Pa11y CI audits against key routes. |
+
+## 🧱 Project structure
 
 ```
-assets/
-  styles.css               Shared styles for the full site
-  site.js                  Scroll + animation helpers for the landing page
-  review-interface.js      Data + filtering logic for the NYC strain explorer
-  review-system.js         Scanner simulation and rewards logic
-  town-square.js           Prompt shuffle + community poll interactions
-  growing-lab.js           Micro-grow simulator state management
-pages/
-  review-interface.html    Dispensary discovery experience
-  review-system.html       Scanner-guided review flow
-  boat-reviews.html        Harbor High microsite
-  weed-town-square.html    Community plaza
-  growing-lab.html         Plant care simulator
-index.html                 Landing page hub
-README.md                  You are here
+├── astro.config.mjs          # Astro configuration with environment banner support
+├── netlify.toml              # Build/deploy contexts, CDN, and function settings
+├── netlify/functions/        # Serverless API endpoints
+│   ├── reservations.js
+│   ├── reviews.js
+│   └── strains.js
+├── public/                   # Static assets served as-is
+│   └── scripts/              # Page-level JavaScript modules
+├── src/
+│   ├── layouts/BaseLayout.astro
+│   ├── pages/                # Astro pages including legal policies
+│   ├── styles/global.css
+│   └── env.d.ts
+└── .github/workflows/ci.yml  # CI: build, tests, and accessibility audits
 ```
 
-## Roadmap & open tasks
+## 🌐 Hosting & environments
 
-Each page is still a prototype. The key follow-ups captured on the landing page roadmap include:
+The repository is pre-configured for Netlify hosting:
 
-- **Live data integrations** – Connect the strain explorer to real dispensary inventory, lab results, and user accounts.
-- **Hardware support** – Replace simulated scans with device camera access and QR validation for the review system.
-- **Community moderation** – Add authentication, chat moderation tools, and verified vendor booths inside the town square.
-- **Reservation flows** – Allow confirmed bookings and seasonal menus on the Harbor High microsite.
-- **Advanced grow modeling** – Layer in hydroponic options, environmental analytics, and exportable grow logs.
+- `netlify.toml` wires the build command (`npm run build`), publish directory (`dist`), and serverless function folder (`netlify/functions`).
+- Context blocks map environment-specific variables for PostHog, Plausible, and UI environment banners via `PUBLIC_DEPLOY_ENV`.
+- CDN caching and SSL termination are handled automatically by Netlify's edge network.
 
-If you extend the project, update both the relevant page and the roadmap notes so visitors know what is live versus planned.
+## ☁️ Serverless APIs
 
-## Contributing
+| Endpoint | Methods | Purpose |
+| --- | --- | --- |
+| `/.netlify/functions/reviews` | `GET`, `POST` | Retrieve featured reviews or queue new submissions for moderation. |
+| `/.netlify/functions/strains` | `GET` | Surface curated strain data and availability snapshots. |
+| `/.netlify/functions/reservations` | `GET`, `POST` | Manage Harbor High voyage availability and reservation intake. |
 
-Feel free to branch off, extend individual modules, or wire the mock data to real services. Keep accessibility, responsive
-layout, and New York compliance in mind while iterating.
+The front-end experiences call these endpoints to power forms, dashboards, and simulated workflows.
+
+## 🔍 Quality & monitoring
+
+- **CI/CD** – `.github/workflows/ci.yml` installs dependencies, runs `astro check`, builds the site, and executes Pa11y CI accessibility audits against primary routes.
+- **Analytics** – `BaseLayout.astro` conditionally embeds Plausible and PostHog scripts based on environment variables.
+- **Legal policies** – `/legal/terms` and `/legal/privacy` are linked from the global footer to document platform usage and privacy practices.
+
+## 🤝 Contributing
+
+1. Fork or branch from `main`.
+2. Install dependencies with `npm install` and run `npm run dev` to iterate locally.
+3. Add or update tests/audits when introducing new features.
+4. Open a pull request—CI will verify builds and accessibility before merge.
+
+GreenEdge prioritizes accessibility, compliance, and responsible cannabis exploration. Contributions that reinforce those values are always welcome.

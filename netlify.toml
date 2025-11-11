@@ -1,0 +1,26 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[dev]
+  command = "npm run dev"
+  framework = "astro"
+
+[context.production.environment]
+  PUBLIC_DEPLOY_ENV = "production"
+  PUBLIC_POSTHOG_KEY = "${POSTHOG_PROD_KEY}"
+  PUBLIC_POSTHOG_HOST = "https://app.posthog.com"
+  PUBLIC_PLAUSIBLE_DOMAIN = "greenedge.example"
+
+[context.deploy-preview.environment]
+  PUBLIC_DEPLOY_ENV = "preview"
+  PUBLIC_POSTHOG_KEY = "${POSTHOG_PREVIEW_KEY}"
+  PUBLIC_POSTHOG_HOST = "https://eu.posthog.com"
+  PUBLIC_PLAUSIBLE_DOMAIN = "preview.greenedge.example"
+
+[context.branch-deploy.environment]
+  PUBLIC_DEPLOY_ENV = "development"
+  PUBLIC_POSTHOG_KEY = ""
+  PUBLIC_POSTHOG_HOST = "https://app.posthog.com"
+  PUBLIC_PLAUSIBLE_DOMAIN = ""

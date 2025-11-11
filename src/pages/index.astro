@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  pageId="index"
+  title="GreenEdge • Elevated Cannabis Reviews"
+  description="Discover, track, and celebrate elevated cannabis experiences across New York's legal market with GreenEdge."
+>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="nav-brand" href="/">GreenEdge</a>
+        <ul>
+          <li><a href="#platform">Platform</a></li>
+          <li><a href="#experiences">Experiences</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="platform">
+      <div class="container hero-grid">
+        <div class="hero-text" data-animate>
+          <span class="tag">Made for New York's legal market</span>
+          <h1>Discover, track, and celebrate every elevated cannabis experience.</h1>
+          <p>
+            GreenEdge stitches together verified strain data, immersive review adventures, and
+            playful learning tools so enthusiasts, retailers, and curious newcomers can explore
+            New York's legal cannabis scene with confidence.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#experiences">Explore the experiences</a>
+            <a class="btn btn-secondary" href="#roadmap">See what's next</a>
+          </div>
+        </div>
+        <div class="surface" data-animate>
+          <h3>Platform at a glance</h3>
+          <div class="split-layout">
+            <div class="highlight-card">
+              <strong>Verified NYC strains</strong>
+              <span data-count="128">0</span>
+              <p>Each strain entry is backed by compliant dispensary data, terpene profiles, and real reviews.</p>
+            </div>
+            <div class="highlight-card">
+              <strong>Community actions logged</strong>
+              <span data-count="984">0</span>
+              <p>Scanner checks, review submissions, and town-square discussions recorded this quarter.</p>
+            </div>
+            <div class="highlight-card">
+              <strong>Gamified learning modules</strong>
+              <span data-count="4">0</span>
+              <p>From voyage reviews to micro-grow labs, master cannabis culture through play.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experiences">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <h2>Immersive experiences</h2>
+          <p>Jump into the themed adventures that inspired each file in this repository. Every page below is a fully designed story living inside the GreenEdge universe.</p>
+        </div>
+        <div class="card-grid">
+          <article class="feature-card" data-animate>
+            <span>🗽</span>
+            <h3>NYC Dispensary Interface</h3>
+            <p>Search, filter, and spotlight state-licensed strains using a slick interface tailored to city shoppers.</p>
+            <a href="/review-interface">Launch experience →</a>
+          </article>
+          <article class="feature-card" data-animate>
+            <span>🧪</span>
+            <h3>Smart Review System</h3>
+            <p>Verify products, track rewards, and submit lab-grade feedback through a guided scanner journey.</p>
+            <a href="/review-system">Open scanner →</a>
+          </article>
+          <article class="feature-card" data-animate>
+            <span>🌊</span>
+            <h3>Harbor High Reviews</h3>
+            <p>Sail the Hudson, sample curated strains, and log nautical tasting notes on our boat club microsite.</p>
+            <a href="/boat-reviews">View voyage journal →</a>
+          </article>
+          <article class="feature-card" data-animate>
+            <span>🏙️</span>
+            <h3>Weed Town Square</h3>
+            <p>Check in with the neighborhood, share hot takes, and browse upcoming NYC cannabis happenings.</p>
+            <a href="/weed-town-square">Enter the square →</a>
+          </article>
+          <article class="feature-card" data-animate>
+            <span>🌱</span>
+            <h3>Micro-Grow Simulator</h3>
+            <p>Experiment with lighting, nutrients, and care routines in a playful grow lab training ground.</p>
+            <a href="/growing-lab">Start growing →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="container split-layout">
+        <div class="surface" data-animate>
+          <h3>Core review tools</h3>
+          <ul>
+            <li><strong>Dosage companion</strong> · Personalized guidance across edibles, flower, and tinctures.</li>
+            <li><strong>Effect tagging</strong> · Capture nuanced mood journeys with terpene-informed descriptors.</li>
+            <li><strong>Scanner verification</strong> · Authenticate packaging, lab dates, and batch data instantly.</li>
+            <li><strong>Reward tiers</strong> · Unlock perks as you help the community stay informed.</li>
+          </ul>
+        </div>
+        <div class="surface" data-animate>
+          <h3>Platform infrastructure</h3>
+          <p>Our modern build pipeline deploys through Netlify's global edge network. Environment targets drive testing and release confidence while analytics illuminate community behavior.</p>
+          <ul>
+            <li><strong>Build environments</strong> · <code>{import.meta.env.PUBLIC_DEPLOY_ENV}</code> driven previews and production releases.</li>
+            <li><strong>Observability</strong> · Privacy-first metrics via Plausible and product analytics with PostHog.</li>
+            <li><strong>Automated quality</strong> · CI tests and accessibility audits ship with every pull request.</li>
+            <li><strong>CDN &amp; SSL</strong> · Netlify handles edge caching, HTTPS, and DNS with zero-maintenance certificates.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="community">
+      <div class="container split-layout">
+        <div class="surface" data-animate>
+          <h3>Community commitments</h3>
+          <p>
+            GreenEdge puts community safety first. Licensed dispensary partnerships, inclusive design, and transparency policies make sure every member has the knowledge to enjoy responsibly.
+          </p>
+          <div class="tag-cloud">
+            <span class="tag">Verified partners</span>
+            <span class="tag">Inclusive events</span>
+            <span class="tag">Responsible growth</span>
+            <span class="tag">Harm reduction</span>
+          </div>
+        </div>
+        <div class="surface" data-animate>
+          <h3>APIs and automations</h3>
+          <p>Serverless functions provide a lightweight data layer for prototypes and integrations.</p>
+          <dl class="timeline">
+            <div class="timeline-item">
+              <dt><strong>/reviews</strong></dt>
+              <dd>Submit and retrieve featured reviews for storefront displays.</dd>
+            </div>
+            <div class="timeline-item">
+              <dt><strong>/strains</strong></dt>
+              <dd>Streamline curated strain data, cannabinoid breakdowns, and availability.</dd>
+            </div>
+            <div class="timeline-item">
+              <dt><strong>/reservations</strong></dt>
+              <dd>Handle limited-seat activations, tastings, and voyage bookings.</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="roadmap">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <h2>Roadmap to legal launch</h2>
+          <p>We're charting a transparent path to bring GreenEdge from prototype to production.</p>
+        </div>
+        <div class="timeline roadmap" data-animate>
+          <div class="timeline-item">
+            <strong>01 · Compliance sprint</strong>
+            <p>Finalize age-gating, privacy controls, and licensed retail agreements.</p>
+          </div>
+          <div class="timeline-item">
+            <strong>02 · Pilot cohort</strong>
+            <p>Open the platform to 100 carefully selected testers for structured feedback cycles.</p>
+          </div>
+          <div class="timeline-item">
+            <strong>03 · Public roll-out</strong>
+            <p>Launch statewide with real-time strain availability, robust accessibility, and trusted review tooling.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Fragment slot="scripts">
+    <script src="/scripts/site.js" defer></script>
+  </Fragment>
+</BaseLayout>

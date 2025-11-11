@@ -1,0 +1,63 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  pageId?: string;
+  canonical?: string;
+}
+
+const {
+  title = 'GreenEdge • Elevated Cannabis Reviews',
+  description = 'Discover elevated cannabis experiences, verified strain data, and immersive NYC review adventures.',
+  pageId = 'page',
+  canonical
+} = Astro.props as Props;
+
+const year = new Date().getFullYear();
+const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
+const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY;
+const posthogHost = import.meta.env.PUBLIC_POSTHOG_HOST ?? 'https://app.posthog.com';
+const deployEnv = import.meta.env.PUBLIC_DEPLOY_ENV || 'development';
+---
+<!DOCTYPE html>
+<html lang="en" data-environment={deployEnv}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%234caf50' d='M24 4c-4.6 5.8-9.4 9.2-14.3 10.2c4 5.2 8.6 7.7 13.1 8.4c-6.5 1.8-11.8 5.3-15.9 11.2c7.4 0 13.1-2.8 17.1-6.4c-2.3 7.1-1.6 12.7 2.3 16.6c3.9-3.9 4.6-9.5 2.3-16.6c4 3.6 9.7 6.4 17.1 6.4c-4.1-5.9-9.4-9.4-15.9-11.2c4.5-.7 9.1-3.2 13.1-8.4C33.4 13.2 28.6 9.8 24 4z'/%3E%3C/svg%3E" />
+    <slot name="head" />
+    {plausibleDomain && (
+      <script defer data-domain={plausibleDomain} src="https://plausible.io/js/script.js"></script>
+    )}
+    {posthogKey && (
+      <script>
+        {`!function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))};}for(var u=e;"undefined"!=typeof u.posthog?u=u.posthog:(u=t.posthog=[]),u.people=[],u.toString=function(t){var e="posthog";return"posthog"!==t&&(e+="."+t),e},u.people.toString=function(){return u.toString("people")},o="capture identify alias people.set people.set_once set_config register unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags reloadFeatureFlags group updateEarlyAccessFeatureEnrollment autocapture persistence sendNetworkRequest debug loadPlugin",n=0;n<o.split(" ").length;n++)g(u,o.split(" ")[n]);e._i.push([i,s,a]);},e.__SV=1.1,(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src="${posthogHost}/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r))}(document,window.posthog||[]);posthog.init("${posthogKey}",{api_host:"${posthogHost}"});`}
+      </script>
+    )}
+  </head>
+  <body data-page={pageId}>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="page-wrapper">
+      <slot />
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-links">
+          <a href="/legal/terms">Terms of Service</a>
+          <a href="/legal/privacy">Privacy Policy</a>
+        </div>
+        <p>© {year} GreenEdge Collective</p>
+        <p class="deploy-env">Environment: {deployEnv}</p>
+      </div>
+    </footer>
+    <slot name="scripts" />
+  </body>
+</html>

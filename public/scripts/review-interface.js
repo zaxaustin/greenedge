@@ -1,4 +1,4 @@
-const STRAINS = [
+const FALLBACK_STRAINS = [
   {
     id: 1,
     name: 'Wedding Cake',
@@ -71,6 +71,8 @@ const STRAINS = [
   }
 ];
 
+let STRAINS = [...FALLBACK_STRAINS];
+
 const filters = {
   search: '',
   type: 'All',
@@ -130,7 +132,34 @@ const applyFilters = () => {
   renderStrains(results);
 };
 
-const initPage = () => {
+const hydrateFromApi = async () => {
+  try {
+    const response = await fetch('/.netlify/functions/strains');
+    if (!response.ok) throw new Error(`Request failed with ${response.status}`);
+    const payload = await response.json();
+    if (Array.isArray(payload.strains) && payload.strains.length) {
+      STRAINS = payload.strains.map(strain => ({
+        id: strain.id,
+        name: strain.name,
+        type: strain.type,
+        thc: `${strain.thc}%`,
+        cbd: `${strain.cbd}%`,
+        dispensary: strain.dispensary,
+        price: strain.price || 'Coming soon',
+        description: strain.description || 'Fresh drop from the GreenEdge network.',
+        effects: strain.effects || ['Happy', 'Balanced'],
+        reviews: strain.reviews || 0,
+        avgRating: strain.rating || 4,
+        trending: Boolean(strain.trending)
+      }));
+    }
+  } catch (error) {
+    console.error('Failed to load strains from API', error);
+  }
+};
+
+const initPage = async () => {
+  await hydrateFromApi();
   renderStrains(STRAINS);
 
   const searchInput = document.querySelector('#search');

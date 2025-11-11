@@ -18,6 +18,8 @@ const pulses = [
   { title: '📚 Policy watch', body: 'Public comment opens for New York vaporizer packaging guidelines on Monday.' }
 ];
 
+const API_ENDPOINT = '/.netlify/functions/reviews';
+
 let promptIndex = 0;
 
 const renderPrompt = () => {
@@ -74,6 +76,40 @@ const initTownSquare = () => {
   renderPulse();
   document.getElementById('shufflePrompt').addEventListener('click', shufflePrompt);
   document.getElementById('pollOptions').addEventListener('click', handleVote);
+
+  const noteForm = document.getElementById('noteForm');
+  const noteStatus = document.getElementById('noteStatus');
+
+  if (noteForm) {
+    noteForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      if (!noteStatus) return;
+
+      const formData = new FormData(noteForm);
+      const payload = Object.fromEntries(formData.entries());
+
+      noteStatus.textContent = 'Sending your update...';
+
+      try {
+        const response = await fetch(API_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+
+        const result = await response.json();
+        noteStatus.textContent = result.message || 'Thanks for sharing! Your update is in the moderation queue.';
+        noteForm.reset();
+      } catch (error) {
+        console.error(error);
+        noteStatus.textContent = 'We could not post your update right now. Try again in a few minutes.';
+      }
+    });
+  }
 };
 
 document.addEventListener('DOMContentLoaded', initTownSquare);
