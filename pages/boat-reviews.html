@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harbor High Voyage Reviews • GreenEdge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="page-nav">
+        <a class="nav-brand" href="../index.html">GreenEdge</a>
+        <a href="../index.html#experiences">← Back to all experiences</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Harbor High voyage review log</h1>
+        <p>
+          Cruise the Hudson, savor curated cannabis pairings, and chronicle every nautical note. Each sail pairs a strain with
+          music, bites, and borough-inspired vistas.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split-layout">
+        <div class="surface" data-animate>
+          <h3>This week's featured sailings</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>Hudson Glow · Sunset Edition</strong>
+              <p>Sampling <em>NYC Diesel</em> with citrus mocktails while gliding past Little Island.</p>
+              <p class="meta">Rating 4.7 · Vibes: Energetic, Creative, Talkative</p>
+            </div>
+            <div class="timeline-item">
+              <strong>East River After Dark</strong>
+              <p>Pairing <em>Blue Dream</em> with blueberry macarons and skyline photography prompts.</p>
+              <p class="meta">Rating 4.4 · Vibes: Euphoric, Uplifted, Inspired</p>
+            </div>
+            <div class="timeline-item">
+              <strong>Rockaway Revival</strong>
+              <p>Beachfront landing featuring <em>Gorilla Glue #4</em> and reggae-fused playlists.</p>
+              <p class="meta">Rating 4.6 · Vibes: Relaxed, Centered, Giggly</p>
+            </div>
+          </div>
+        </div>
+        <div class="surface" data-animate>
+          <h3>Reserve your cabin</h3>
+          <form class="rail" id="reservationForm">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" required placeholder="Sailor name" />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" required placeholder="you@harborhigh.com" />
+            </label>
+            <label>
+              <span>Preferred voyage</span>
+              <select name="voyage" required>
+                <option value="Hudson Glow">Hudson Glow</option>
+                <option value="East River After Dark">East River After Dark</option>
+                <option value="Rockaway Revival">Rockaway Revival</option>
+              </select>
+            </label>
+            <label>
+              <span>Notes</span>
+              <textarea name="notes" rows="3" placeholder="Anything we should know?"></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Request invite</button>
+            <p id="reservationStatus" style="color:var(--accent);"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <h2>Voyage review archive</h2>
+          <p>Highlights pulled from last season's community submissions.</p>
+        </div>
+        <div class="card-grid">
+          <article class="feature-card" data-animate>
+            <span>🚤</span>
+            <h3>Midtown Mixer</h3>
+            <p>"Wedding Cake had the cabin sharing poetry. Pairing with peach tartlets was inspired."</p>
+            <p class="meta">Reviewer: Layla · Rating 4.8</p>
+          </article>
+          <article class="feature-card" data-animate>
+            <span>🎧</span>
+            <h3>LoFi on the Lower Bay</h3>
+            <p>"Purple Haze + live DJ + sea breeze = instant nostalgia. Would book again."</p>
+            <p class="meta">Reviewer: Devon · Rating 4.6</p>
+          </article>
+          <article class="feature-card" data-animate>
+            <span>🍽️</span>
+            <h3>Chef's Tasting Cruise</h3>
+            <p>"Sour Diesel with citrus cured salmon was unexpectedly perfect."</p>
+            <p class="meta">Reviewer: Priya · Rating 4.7</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> GreenEdge Collective</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('reservationForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const status = document.getElementById('reservationStatus');
+      status.textContent = 'Thank you! A crew member will confirm within 24 hours.';
+      event.target.reset();
+    });
+  </script>
+</body>
+</html>

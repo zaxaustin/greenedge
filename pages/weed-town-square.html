@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weed Town Square • GreenEdge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="page-nav">
+        <a class="nav-brand" href="../index.html">GreenEdge</a>
+        <a href="../index.html#experiences">← Back to all experiences</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Weed Town Square</h1>
+        <p>
+          The civic heart of GreenEdge. Drop your daily hot take, browse verified events, and stay current on policy updates and
+          neighborhood happenings.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container square-grid">
+        <div class="prompt-card" data-animate>
+          <h2>Daily conversation starter</h2>
+          <p id="dailyPrompt"></p>
+          <button class="btn btn-secondary" id="shufflePrompt" type="button">Shuffle prompt</button>
+          <p style="color:var(--muted); font-size:0.9rem;">Tap to cycle through community-sourced questions.</p>
+        </div>
+
+        <div class="event-board" data-animate>
+          <h2>Upcoming happenings</h2>
+          <article>
+            <h3>Brooklyn High Brunch</h3>
+            <p>Sat · 11am · Crown Heights · Prix fixe infused tasting menu with mocktails.</p>
+          </article>
+          <article>
+            <h3>Hudson Lounge Residency</h3>
+            <p>Thu · 8pm · Pier 57 · Live DJs, curated flower bar, and waterfront meditation corner.</p>
+          </article>
+          <article>
+            <h3>Policy & Pancakes</h3>
+            <p>Sun · 10am · Harlem · Learn about municipal licensing while sharing community breakfast.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container square-grid">
+        <div class="community-pulse" id="pulseFeed" data-animate></div>
+        <div class="poll-card" data-animate>
+          <h2>Vote on our next marquee event</h2>
+          <div id="pollOptions" class="community-pulse"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> GreenEdge Collective</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="../assets/town-square.js" defer></script>
+</body>
+</html>

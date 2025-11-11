@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Review System • GreenEdge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="page-nav">
+        <a class="nav-brand" href="../index.html">GreenEdge</a>
+        <a href="../index.html#experiences">← Back to all experiences</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Scanner-guided cannabis reviews</h1>
+        <p>
+          Walk through the product verification flow, capture sensory notes, and earn loyalty rewards while helping the
+          community stay informed.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container system-grid">
+        <div class="scanner-card" data-animate>
+          <h2>1 · Authenticate your product</h2>
+          <p>Use your phone camera to scan the QR or barcode on licensed New York cannabis packaging.</p>
+          <div class="scan-viewport">
+            <span>Position the code inside the frame</span>
+          </div>
+          <button class="btn btn-primary" id="scanButton">Start scan</button>
+          <ul>
+            <li>Verify harvest and test dates before you consume.</li>
+            <li>Flag suspicious packaging for rapid investigation.</li>
+            <li>Unlock bonus rewards for first-time product checks.</li>
+          </ul>
+        </div>
+
+        <div class="product-card" data-animate hidden>
+          <h2 data-name></h2>
+          <p data-brand class="meta"></p>
+          <p data-desc></p>
+          <div class="product-meta">
+            <span data-meta></span>
+            <span data-lab></span>
+            <span data-terpenes></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container system-grid">
+        <div class="review-card" data-animate hidden>
+          <div class="stepper">
+            <span>1 · Method</span>
+            <span>2 · Effects</span>
+            <span>3 · Overall</span>
+          </div>
+
+          <div data-step="0">
+            <h3>How are you consuming NYC Diesel?</h3>
+            <div class="option-grid">
+              <label>
+                <input type="radio" name="method" value="smoking" /> Smoking
+              </label>
+              <label>
+                <input type="radio" name="method" value="vaping" /> Vaping
+              </label>
+              <label>
+                <input type="radio" name="method" value="edibles" /> Edible
+              </label>
+              <label>
+                <input type="radio" name="method" value="tincture" /> Tincture
+              </label>
+            </div>
+          </div>
+
+          <div data-step="1" hidden id="effectsStep">
+            <!-- Populated by inline script -->
+          </div>
+
+          <div data-step="2" hidden>
+            <h3>Overall impression</h3>
+            <p style="color:var(--muted);">Rate how this batch delivered on potency, freshness, and vibe.</p>
+            <div class="slider-output"><span id="ratingValue">4</span>★</div>
+            <input type="range" id="ratingRange" min="1" max="5" step="1" value="4" />
+            <div class="option-grid">
+              <label><input type="radio" id="recommend-yes" name="recommend" value="yes" checked /> Would recommend</label>
+              <label><input type="radio" id="recommend-maybe" name="recommend" value="maybe" /> Maybe</label>
+              <label><input type="radio" id="recommend-no" name="recommend" value="no" /> Not this batch</label>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px;">
+            <button class="btn btn-secondary" id="backStep" type="button">Back</button>
+            <button class="btn btn-primary" id="nextStep" type="button">Next</button>
+          </div>
+        </div>
+
+        <div class="rewards-card" data-animate hidden>
+          <h2>Rewards unlocked!</h2>
+          <p>Thanks for closing the feedback loop. Your notes help thousands of New Yorkers choose responsibly.</p>
+          <ul class="rewards-grid"></ul>
+          <p>Keep scanning products within 48 hours for streak boosts and exclusive event invites.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> GreenEdge Collective</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="../assets/review-system.js" defer></script>
+</body>
+</html>
