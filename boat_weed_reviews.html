@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harbor High - Cannabis Reviews from NYC Waters</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4CAF50;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4CAF50;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23001122" width="1200" height="600"/><path fill="%23334455" d="M0 400h1200v200H0z"/><rect fill="%23667788" x="200" y="200" width="50" height="200"/><rect fill="%23667788" x="300" y="150" width="40" height="250"/><rect fill="%23667788" x="450" y="180" width="60" height="220"/><rect fill="%23667788" x="600" y="120" width="55" height="280"/><rect fill="%23667788" x="750" y="160" width="45" height="240"/><rect fill="%23667788" x="900" y="100" width="70" height="300"/><circle fill="%234CAF50" cx="100" cy="500" r="15"/><path fill="%23ffffff" d="M80 490c10-5 20-5 30 0v20c-10 5-20 5-30 0z"/></svg>') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .cta-btn {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.4);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .review-image {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .review-image::before {
+            content: '🚤';
+            position: absolute;
+            font-size: 4rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.7;
+        }
+
+        .review-content {
+            padding: 25px;
+        }
+
+        .strain-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .rating {
+            color: #FFD700;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .about {
+            background: rgba(255, 255, 255, 0.95);
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #4CAF50;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px;
+            background: rgba(76, 175, 80, 0.1);
+            border-radius: 15px;
+            border: 2px solid rgba(76, 175, 80, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .video-placeholder {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-placeholder::before {
+            content: '▶️';
+            font-size: 4rem;
+            position: absolute;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">🌊 Harbor High</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Harbor High</h1>
+            <p>Cannabis Reviews from the Waters of NYC</p>
+            <p style="font-size: 1rem; opacity: 0.9;">Authentic community-driven reviews with the city skyline as our backdrop</p>
+            <a href="#reviews" class="cta-btn">Check Out Our Reviews</a>
+        </div>
+    </section>
+
+    <section class="section about" id="about">
+        <div class="container">
+            <h2>Welcome Aboard</h2>
+            <p>We're taking cannabis reviews to new waters! Broadcasting live from our floating studio with the iconic NYC skyline behind us, we bring you honest, community-focused reviews in a setting unlike any other.</p>
+            <p>Starting with our trusty 10-foot inflatable boat, we're building a unique platform where the cannabis community can discover, discuss, and celebrate the best strains while enjoying breathtaking waterfront views.</p>
+            
+            <div class="video-placeholder">
+                Latest Review: "Skyline Kush" - Episode #003
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🚤</div>
+                    <h3>Unique Setting</h3>
+                    <p>Reviews filmed on the water with NYC's stunning skyline backdrop</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👥</div>
+                    <h3>Community Focused</h3>
+                    <p>Built by and for the cannabis community, featuring real experiences</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📹</div>
+                    <h3>Video Reviews</h3>
+                    <p>High-quality video content that brings you along for the experience</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚓</div>
+                    <h3>Authentic</h3>
+                    <p>Honest reviews from real enthusiasts, not corporate shills</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="reviews" style="background: rgba(255,255,255,0.95);">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 30px; color: #4CAF50;">Latest Reviews</h2>
+            
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-image"></div>
+                    <div class="review-content">
+                        <div class="strain-name">Purple Haze</div>
+                        <div class="rating">⭐⭐⭐⭐⭐ 4.7/5</div>
+                        <p>Reviewed off Staten Island with the Statue of Liberty in view. This classic strain delivered amazing euphoric effects perfect for our sunset session...</p>
+                        <small style="color: #666;">Episode #005 • 3 days ago</small>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-image"></div>
+                    <div class="review-content">
+                        <div class="strain-name">NYC Diesel</div>
+                        <div class="rating">⭐⭐⭐⭐☆ 4.2/5</div>
+                        <p>Had to review this NYC classic while floating in the Hudson. The citrusy aroma mixed perfectly with the harbor breeze. Great for creative sessions...</p>
+                        <small style="color: #666;">Episode #004 • 1 week ago</small>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-image"></div>
+                    <div class="review-content">
+                        <div class="strain-name">Skyline Kush</div>
+                        <div class="rating">⭐⭐⭐⭐⭐ 4.9/5</div>
+                        <p>Our highest-rated strain yet! Reviewed during golden hour with Manhattan's skyline glowing behind us. Incredible relaxation and mood enhancement...</p>
+                        <small style="color: #666;">Episode #003 • 2 weeks ago</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Harbor High. Sailing responsibly. Reviews for educational purposes.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Follow us: 📱 @HarborHighNYC | 📧 crew@harborhigh.com</p>
+        </div>
+    </footer>
+</body>
+</html>
