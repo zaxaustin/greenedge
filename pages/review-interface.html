@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NYC Dispensary Interface • GreenEdge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="page-nav">
+        <a class="nav-brand" href="../index.html">GreenEdge</a>
+        <a href="../index.html#experiences">← Back to all experiences</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>NYC dispensary discovery interface</h1>
+        <p>
+          Browse a curated dataset of New York State-legal cannabis strains. Filter by category, spotlight trending releases,
+          and surface dispensary specifics before you ever leave the house.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label for="search" class="sr-only">Search strains</label>
+            <input id="search" type="search" placeholder="Search strain or dispensary" />
+
+            <label for="type" class="sr-only">Filter by type</label>
+            <select id="type">
+              <option value="All">All styles</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Sativa">Sativa</option>
+              <option value="Indica">Indica</option>
+              <option value="Trending">Trending now</option>
+            </select>
+          </div>
+          <label style="display:flex; align-items:center; gap:10px; color:var(--muted);">
+            <input id="trending" type="checkbox" /> Trending only
+          </label>
+        </div>
+
+        <div class="strain-grid" data-animate></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container split-layout">
+        <div class="rail" data-animate>
+          <h3>Product spotlight timeline</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>01 · Curate</strong>
+              <p>Pull state-compliant inventory data, lab results, and terpene breakdowns from partner dispensaries.</p>
+            </div>
+            <div class="timeline-item">
+              <strong>02 · Personalize</strong>
+              <p>Layer in saved favorites, medical intents, and tolerance levels to tailor the strain list to each user.</p>
+            </div>
+            <div class="timeline-item">
+              <strong>03 · Guide</strong>
+              <p>Offer dosage suggestions, complementary products, and neighborhood pairing tips.</p>
+            </div>
+          </div>
+        </div>
+        <div class="surface" data-animate>
+          <h3>Up next for this module</h3>
+          <ul>
+            <li>Integrate official dispensary inventory APIs and real-time availability.</li>
+            <li>Create session persistence for saved filters, favorites, and comparison notes.</li>
+            <li>Expand accessibility support with keyboard shortcuts and screen-reader cues.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> GreenEdge Collective</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="../assets/review-interface.js" defer></script>
+</body>
+</html>

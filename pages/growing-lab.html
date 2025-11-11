@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Micro-Grow Lab • GreenEdge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="page-nav">
+        <a class="nav-brand" href="../index.html">GreenEdge</a>
+        <a href="../index.html#experiences">← Back to all experiences</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Micro-grow training lab</h1>
+        <p>
+          Experiment with seed selection, plant care, and harvest timing while keeping everything compliant with New York home
+          grow allowances.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="stat-grid" data-animate>
+          <div class="stat-tile">
+            <span>Day</span>
+            <strong id="statDay">1</strong>
+          </div>
+          <div class="stat-tile">
+            <span>Bankroll</span>
+            <strong id="statMoney">$500</strong>
+          </div>
+          <div class="stat-tile">
+            <span>Experience</span>
+            <strong id="statXP">0</strong>
+          </div>
+          <div class="stat-tile">
+            <span>Score</span>
+            <strong id="statScore">0</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container grow-grid">
+        <div class="lab-panel" data-animate>
+          <h2>Seed catalog</h2>
+          <p>Each selection mirrors a real-world cultivar with estimated grow times and yields.</p>
+          <div id="seedCatalog" class="grow-grid" style="grid-template-columns:1fr;"></div>
+        </div>
+        <div class="lab-panel" data-animate>
+          <h2>Your plants</h2>
+          <p>Monitor health stats and take action before stress sets in.</p>
+          <div id="plantDeck" class="grow-grid" style="grid-template-columns:1fr;"></div>
+          <button class="btn btn-primary" id="advanceDay" type="button">Advance a day</button>
+          <p style="color:var(--muted); font-size:0.9rem;">Advancing a day updates every plant's growth stage, water, and light needs.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> GreenEdge Collective</p>
+  </footer>
+
+  <div class="notification-stack" aria-live="polite"></div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="../assets/growing-lab.js" defer></script>
+</body>
+</html>

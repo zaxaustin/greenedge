@@ -1,949 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elevated Reviews - Premium Cannabis Insights</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #f39c12;
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #f39c12, #e74c3c);
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Founders Section */
-        .founders {
-            background: white;
-            padding: 80px 0;
-            margin-top: 40px;
-        }
-
-        .founders h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-        }
-
-        .founders-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-
-        .founder-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .founder-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .founder-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            font-weight: bold;
-        }
-
-        .founder-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .founder-title {
-            color: #667eea;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .founder-description {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* Services Section */
-        .services {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            padding: 80px 0;
-            color: white;
-        }
-
-        .services h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Education Section */
-        .education {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            padding: 80px 0;
-            color: white;
-        }
-
-        .education h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .edu-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .edu-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .edu-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .edu-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .dosage-calculator {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .calculator-form {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .calc-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .calc-group label {
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .calc-group select,
-        .calc-group input {
-            padding: 10px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            color: #333;
-        }
-
-        .calc-result {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            background: #f8f9fa;
-            padding: 80px 0;
-        }
-
-        .testimonials h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .testimonial-quote {
-            font-style: italic;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .testimonial-company {
-            color: #667eea;
-            font-size: 0.9rem;
-        }
-
-        .quote-mark {
-            font-size: 3rem;
-            color: #667eea;
-            opacity: 0.3;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            background: white;
-            padding: 80px 0;
-        }
-
-        .portfolio h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #333;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .portfolio-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .portfolio-card h3 {
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        .strain-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .strain-type {
-            background: #667eea;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .thc-level {
-            background: #e74c3c;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .rating {
-            color: #f39c12;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Newsletter Section */
-        .newsletter {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 60px 0;
-            color: white;
-            text-align: center;
-        }
-
-        .newsletter h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .newsletter-form {
-            display: flex;
-            max-width: 500px;
-            margin: 2rem auto;
-            gap: 1rem;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-        }
-
-        .newsletter-btn {
-            background: #f39c12;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-btn:hover {
-            background: #e67e22;
-            transform: translateY(-2px);
-        }
-        .contact {
-            background: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #333;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Footer */
-        footer {
-            background: #2c3e50;
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .founders-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreenEdge • Elevated Cannabis Reviews</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath fill='%234caf50' d='M24 4c-4.6 5.8-9.4 9.2-14.3 10.2c4 5.2 8.6 7.7 13.1 8.4c-6.5 1.8-11.8 5.3-15.9 11.2c7.4 0 13.1-2.8 17.1-6.4c-2.3 7.1-1.6 12.7 2.3 16.6c3.9-3.9 4.6-9.5 2.3-16.6c4 3.6 9.7 6.4 17.1 6.4c-4.1-5.9-9.4-9.4-15.9-11.2c4.5-.7 9.1-3.2 13.1-8.4C33.4 13.2 28.6 9.8 24 4z'/%3E%3C/svg%3E" />
 </head>
-<body>
-    <header>
-        <nav class="container">
-            <a href="#" class="logo">🌿 Elevated Reviews</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#founders">Founders</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#contact">Contact</a></li>
+<body data-page="index">
+  <header>
+    <div class="container">
+      <nav>
+        <a class="nav-brand" href="index.html">GreenEdge</a>
+        <ul>
+          <li><a href="#platform">Platform</a></li>
+          <li><a href="#experiences">Experiences</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="platform">
+      <div class="container hero-grid">
+        <div class="hero-text" data-animate>
+          <span class="tag">Made for New York's legal market</span>
+          <h1>Discover, track, and celebrate every elevated cannabis experience.</h1>
+          <p>
+            GreenEdge stitches together verified strain data, immersive review adventures, and
+            playful learning tools so enthusiasts, retailers, and curious newcomers can explore
+            New York's legal cannabis scene with confidence.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#experiences">Explore the experiences</a>
+            <a class="btn btn-secondary" href="#roadmap">See what's next</a>
+          </div>
+        </div>
+        <div class="surface" data-animate>
+          <h3>Platform at a glance</h3>
+          <div class="split-layout">
+            <div class="highlight-card">
+              <strong>Verified NYC strains</strong>
+              <span data-count="128">0</span>
+              <p>Each strain entry is backed by compliant dispensary data, terpene profiles, and real reviews.</p>
+            </div>
+            <div class="highlight-card">
+              <strong>Community actions logged</strong>
+              <span data-count="984">0</span>
+              <p>Scanner checks, review submissions, and town-square discussions recorded this quarter.</p>
+            </div>
+            <div class="highlight-card">
+              <strong>Gamified learning modules</strong>
+              <span data-count="4">0</span>
+              <p>From voyage reviews to micro-grow labs, master cannabis culture through play.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experiences">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <h2>Immersive experiences</h2>
+          <p>Jump into the themed adventures that inspired each file in this repository. Every page below is a fully designed story living inside the GreenEdge universe.</p>
+        </div>
+        <div class="card-grid">
+          <article class="feature-card" data-animate>
+            <span>🗽</span>
+            <h3>NYC Dispensary Interface</h3>
+            <p>Search, filter, and spotlight state-licensed strains using a slick interface tailored to city shoppers.</p>
+            <a href="pages/review-interface.html">Launch experience →</a>
+          </article>
+          <article class="feature-card" data-animate>
+            <span>🧪</span>
+            <h3>Smart Review System</h3>
+            <p>Verify products, track rewards, and submit lab-grade feedback through a guided scanner journey.</p>
+            <a href="pages/review-system.html">Open scanner →</a>
+          </article>
+          <article class="feature-card" data-animate>
+            <span>🌊</span>
+            <h3>Harbor High Reviews</h3>
+            <p>Sail the Hudson, sample curated strains, and log nautical tasting notes on our boat club microsite.</p>
+            <a href="pages/boat-reviews.html">View voyage journal →</a>
+          </article>
+          <article class="feature-card" data-animate>
+            <span>🏙️</span>
+            <h3>Weed Town Square</h3>
+            <p>Check in with the neighborhood, share hot takes, and browse upcoming NYC cannabis happenings.</p>
+            <a href="pages/weed-town-square.html">Enter the square →</a>
+          </article>
+          <article class="feature-card" data-animate>
+            <span>🌱</span>
+            <h3>Micro-Grow Simulator</h3>
+            <p>Experiment with lighting, nutrients, and care routines in a playful grow lab training ground.</p>
+            <a href="pages/growing-lab.html">Start growing →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="container split-layout">
+        <div class="surface" data-animate>
+          <h3>Core review tools</h3>
+          <ul>
+            <li><strong>Dosage companion</strong> · Personalized guidance across edibles, flower, and tinctures.</li>
+            <li><strong>Effect tagging</strong> · Capture nuanced mood journeys with terpene-informed descriptors.</li>
+            <li><strong>Scanner verification</strong> · Authenticate packaging, lab dates, and batch data instantly.</li>
+            <li><strong>Reward tiers</strong> · Unlock perks as you help the community stay informed.</li>
+          </ul>
+        </div>
+        <div class="surface" data-animate>
+          <h3>Playful learning</h3>
+          <ul>
+            <li><strong>Voyage tastings</strong> · Pair strains with curated playlists as you cruise the boroughs.</li>
+            <li><strong>Community prompts</strong> · Daily conversation starters sourced from NYC locals.</li>
+            <li><strong>Grow lab</strong> · Monitor plant health metrics and test experimental care recipes.</li>
+            <li><strong>Interactive map</strong> · Track dispensary openings and delivery zones citywide.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="community">
+      <div class="container split-layout">
+        <div data-animate>
+          <div class="section-header" style="text-align:left; margin-bottom:28px;">
+            <h2>Powered by a collaborative crew</h2>
+            <p>GreenEdge unites verified reviewers, dispensary partners, hospitality guides, and cannabis educators across the five boroughs.</p>
+          </div>
+          <div class="surface">
+            <h3>What community members value</h3>
+            <ul>
+              <li>Transparent batch, terpene, and lab results for every legal product.</li>
+              <li>Spaces to compare experiences—from rooftop lounges to ferry rides.</li>
+              <li>Progression systems that reward responsible, thoughtful feedback.</li>
+              <li>Educational loops bridging first-timers and seasoned connoisseurs.</li>
             </ul>
-        </nav>
-    </header>
-
-    <section id="home" class="hero">
-        <div class="container">
-            <h1 class="fade-in">Premium Cannabis Reviews</h1>
-            <p class="fade-in">Expert insights combining business acumen with spiritual wellness</p>
-            <a href="#contact" class="cta-button fade-in">Partner With Us</a>
+          </div>
         </div>
+        <div class="surface" data-animate>
+          <h3>Conversation starters</h3>
+          <div class="tag-cloud">
+            <span class="tag">#HudsonSessions</span>
+            <span class="tag">#TerpeneTuesdays</span>
+            <span class="tag">#BudAndBrunch</span>
+            <span class="tag">#ElevatedTransit</span>
+            <span class="tag">#GrowLabTrials</span>
+            <span class="tag">#PolicyWatch</span>
+            <span class="tag">#TasteTheBoroughs</span>
+            <span class="tag">#RespectThePlant</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="founders" class="founders">
-        <div class="container">
-            <h2>Meet Our Founders</h2>
-            <div class="founders-grid">
-                <div class="founder-card fade-in">
-                    <div class="founder-avatar">W</div>
-                    <h3>Will</h3>
-                    <p class="founder-title">Sales & Business Development Expert</p>
-                    <p class="founder-description">
-                        With 6 years of proven sales experience, Will brings deep market understanding and strategic business development to our cannabis review platform. His expertise in building relationships and understanding market dynamics ensures we connect the right products with the right audiences. Will's sales-driven approach helps cannabis companies maximize their reach and impact in the competitive marketplace.
-                    </p>
-                </div>
-                <div class="founder-card fade-in">
-                    <div class="founder-avatar">Z</div>
-                    <h3>Zach</h3>
-                    <p class="founder-title">Spiritual Wellness & Cannabis Expert</p>
-                    <p class="founder-description">
-                        Zach is our resident spiritual guide and self-taught cannabis wellness doctor. Through years of dedicated self-study and personal exploration, he has developed deep insights into how different strains affect the mind, body, and spirit. His holistic approach to cannabis review goes beyond just effects—he understands the spiritual and therapeutic dimensions that make each strain unique for different wellness journeys.
-                    </p>
-                </div>
-            </div>
+    <section class="section" id="roadmap">
+      <div class="container">
+        <div class="section-header" data-animate>
+          <h2>Roadmap highlights</h2>
+          <p>The extra files in this project map directly to our content roadmap. Here's how each fits into the bigger picture and what still needs love.</p>
         </div>
+        <div class="card-grid">
+          <article class="feature-card" data-expandable>
+            <span>🔍</span>
+            <h3>NYC Review Interface</h3>
+            <p>The search &amp; filter interface is functional, but it needs live API data, saved favorites, and accessibility polish.</p>
+            <button class="btn btn-secondary" type="button">See next steps</button>
+            <div class="surface" style="display:none;"></div>
+          </article>
+          <article class="feature-card" data-expandable>
+            <span>🛰️</span>
+            <h3>Scanner &amp; Rewards</h3>
+            <p>The guided scanner flow is prototyped. Next milestones include camera integration, review moderation, and SMS reward drops.</p>
+            <button class="btn btn-secondary" type="button">See next steps</button>
+            <div class="surface" style="display:none;"></div>
+          </article>
+          <article class="feature-card" data-expandable>
+            <span>🛥️</span>
+            <h3>Harbor High Microsite</h3>
+            <p>The nautical review diary is live. We still need reservation integrations and seasonal menu management.</p>
+            <button class="btn btn-secondary" type="button">See next steps</button>
+            <div class="surface" style="display:none;"></div>
+          </article>
+          <article class="feature-card" data-expandable>
+            <span>🌆</span>
+            <h3>Town Square Social</h3>
+            <p>The civic space introduces daily prompts and event boards. Real-time chat and verified vendor booths are in progress.</p>
+            <button class="btn btn-secondary" type="button">See next steps</button>
+            <div class="surface" style="display:none;"></div>
+          </article>
+          <article class="feature-card" data-expandable>
+            <span>🧬</span>
+            <h3>Micro-Grow Lab</h3>
+            <p>Our simulator teaches plant care loops. Next up: hydroponic scenarios, advanced analytics, and exportable grow logs.</p>
+            <button class="btn btn-secondary" type="button">See next steps</button>
+            <div class="surface" style="display:none;"></div>
+          </article>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🔬</div>
-                    <h3>Expert Product Reviews</h3>
-                    <p>Comprehensive analysis of cannabis products from both business and wellness perspectives, providing detailed insights into effects, quality, and market positioning.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💼</div>
-                    <h3>Business Consultation</h3>
-                    <p>Strategic guidance for cannabis companies looking to improve their products, understand their market, and connect with their target audience effectively.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🧘</div>
-                    <h3>Wellness Integration</h3>
-                    <p>Spiritual and therapeutic insights that help consumers understand how different strains can support their personal wellness and spiritual practices.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Market Analysis</h3>
-                    <p>Data-driven insights combining sales expertise with user experience analysis to help brands understand their position in the evolving cannabis market.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#platform">Platform</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#tools">Tools</a>
+      <a href="#community">Community</a>
+      <a href="#roadmap">Roadmap</a>
+    </div>
+    <p>© <span id="year"></span> GreenEdge Collective · Built for NYC's legal cannabis community.</p>
+  </footer>
 
-    <section id="education" class="education">
-        <div class="container">
-            <h2>Free Cannabis Education</h2>
-            <div class="education-grid">
-                <div class="edu-card" onclick="toggleSection('strains')">
-                    <div class="edu-icon">🌿</div>
-                    <h3>Strain Database</h3>
-                    <p>Comprehensive library of cannabis strains with detailed effects, terpene profiles, and recommended uses for different wellness goals.</p>
-                </div>
-                <div class="edu-card" onclick="toggleSection('cannabinoids')">
-                    <div class="edu-icon">🧬</div>
-                    <h3>Cannabinoid Guide</h3>
-                    <p>Learn about THC, CBD, CBG, CBN and other cannabinoids. Understand how they interact with your body and which ones suit your needs.</p>
-                </div>
-                <div class="edu-card" onclick="toggleSection('terpenes')">
-                    <div class="edu-icon">🌺</div>
-                    <h3>Terpene Education</h3>
-                    <p>Discover how terpenes like myrcene, limonene, and pinene affect your cannabis experience and contribute to different effects.</p>
-                </div>
-                <div class="edu-card" onclick="toggleSection('wellness')">
-                    <div class="edu-icon">🧘</div>
-                    <h3>Wellness Integration</h3>
-                    <p>Learn how to incorporate cannabis into your spiritual practice, meditation, creativity, and overall wellness routine.</p>
-                </div>
-            </div>
-            
-            <div class="dosage-calculator">
-                <h3>🧮 Dosage Calculator</h3>
-                <p>Find your ideal dose based on experience level and desired effects.</p>
-                <div class="calculator-form">
-                    <div class="calc-group">
-                        <label>Experience Level:</label>
-                        <select id="experience" onchange="calculateDosage()">
-                            <option value="">Select Level</option>
-                            <option value="beginner">Beginner</option>
-                            <option value="intermediate">Intermediate</option>
-                            <option value="experienced">Experienced</option>
-                        </select>
-                    </div>
-                    <div class="calc-group">
-                        <label>Consumption Method:</label>
-                        <select id="method" onchange="calculateDosage()">
-                            <option value="">Select Method</option>
-                            <option value="smoking">Smoking/Vaping</option>
-                            <option value="edibles">Edibles</option>
-                            <option value="tinctures">Tinctures</option>
-                        </select>
-                    </div>
-                    <div class="calc-group">
-                        <label>Desired Effect:</label>
-                        <select id="effect" onchange="calculateDosage()">
-                            <option value="">Select Effect</option>
-                            <option value="relaxation">Relaxation</option>
-                            <option value="creativity">Creativity</option>
-                            <option value="sleep">Sleep</option>
-                            <option value="focus">Focus</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="dosage-result" class="calc-result" style="display: none;"></div>
-            </div>
-        </div>
-    </section>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2>What Companies Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="quote-mark">"</div>
-                    <p class="testimonial-quote">Will's business insights and Zach's spiritual approach gave us exactly what we needed. Their review helped us understand our product's true market position and how customers actually experience our strains.</p>
-                    <div class="testimonial-author">Sarah Chen</div>
-                    <div class="testimonial-company">Green Horizon Cultivators</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="quote-mark">"</div>
-                    <p class="testimonial-quote">The depth of knowledge these guys bring is incredible. They don't just smoke and rate - they understand the business side AND the wellness applications. Game-changer for our product development.</p>
-                    <div class="testimonial-author">Marcus Rodriguez</div>
-                    <div class="testimonial-company">Elevated Extracts NYC</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="quote-mark">"</div>
-                    <p class="testimonial-quote">Finally, reviewers who get it. Will helped us position our products better in the market, while Zach's spiritual insights opened our eyes to customer segments we never considered.</p>
-                    <div class="testimonial-author">Jessica Park</div>
-                    <div class="testimonial-company">Brooklyn Botanicals</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    const detailCopy = new Map([
+      ['NYC Review Interface', [
+        'Integrate live inventory feeds from dispensary partners.',
+        'Add account-level strain tracking and bookmarked favorites.',
+        'Expand accessibility features: keyboard navigation and aria-live updates.'
+      ]],
+      ['Scanner & Rewards', [
+        'Connect to device cameras and verify product QR codes.',
+        'Design moderation workflow for submitted community reviews.',
+        'Pilot SMS-based reward notifications with partner dispensaries.'
+      ]],
+      ['Harbor High Microsite', [
+        'Add reservation requests and boat capacity management.',
+        'Build seasonal pairing menus and playlist curation tools.',
+        'Localize content for Hudson, East River, and Rockaway routes.'
+      ]],
+      ['Town Square Social', [
+        'Launch real-time chat with moderation tools and badges.',
+        'Curate verified vendor booths with scheduling slots.',
+        'Introduce neighborhood-based meetups and volunteer boards.'
+      ]],
+      ['Micro-Grow Lab', [
+        'Model hydroponic and outdoor grow scenarios.',
+        'Add environment analytics exports for educators.',
+        'Unlock competitive challenges and leaderboard seasons.'
+      ]]
+    ]);
 
-    <section class="portfolio">
-        <div class="container">
-            <h2>Recent Reviews</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-card">
-                    <h3>Purple Haze</h3>
-                    <div class="strain-info">
-                        <span class="strain-type">Sativa</span>
-                        <span class="thc-level">22% THC</span>
-                    </div>
-                    <div class="rating">★★★★★</div>
-                    <p>Exceptional creativity booster with smooth spiritual elevation. Perfect for artists and meditation practitioners. The terpene profile delivers exactly what the genetics promise.</p>
-                </div>
-                <div class="portfolio-card">
-                    <h3>Granddaddy Purple</h3>
-                    <div class="strain-info">
-                        <span class="strain-type">Indica</span>
-                        <span class="thc-level">18% THC</span>
-                    </div>
-                    <div class="rating">★★★★☆</div>
-                    <p>Solid choice for evening relaxation and sleep preparation. The myrcene content lives up to expectations, though the spiritual depth could be enhanced.</p>
-                </div>
-                <div class="portfolio-card">
-                    <h3>Blue Dream</h3>
-                    <div class="strain-info">
-                        <span class="strain-type">Hybrid</span>
-                        <span class="thc-level">20% THC</span>
-                    </div>
-                    <div class="rating">★★★★★</div>
-                    <p>The perfect balance strain. Excellent for both business creativity and spiritual practice. Great market potential for wellness-focused consumers.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    document.querySelectorAll('[data-expandable]').forEach(card => {
+      const title = card.querySelector('h3').textContent.trim();
+      const button = card.querySelector('button');
+      const detail = card.querySelector('.surface');
+      const tasks = detailCopy.get(title);
 
-    <section class="newsletter">
-        <div class="container">
-            <h2>Stay Elevated</h2>
-            <p>Get weekly cannabis insights, strain recommendations, and wellness tips</p>
-            <div class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Enter your email" id="newsletter-email">
-                <button class="newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>
-            </div>
-        </div>
-    </section>
+      if (tasks) {
+        detail.innerHTML = `<h4>Up next</h4><ul>${tasks.map(item => `<li>${item}</li>`).join('')}</ul>`;
+      }
 
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Ready to Partner?</h2>
-            <p>Let's discuss how we can provide valuable insights for your cannabis products.</p>
-            <div class="contact-form">
-                <div class="form-group">
-                    <label for="company">Company Name</label>
-                    <input type="text" id="company" name="company" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="products">Products for Review</label>
-                    <textarea id="products" name="products" rows="4" placeholder="Tell us about the products you'd like us to review..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="message">Additional Information</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Any specific requirements or goals for the review?"></textarea>
-                </div>
-                <button type="button" class="submit-btn" onclick="submitForm()">Send Inquiry</button>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Elevated Reviews. Professional cannabis insights based in New York City.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Form submission handler
-        function submitForm() {
-            const company = document.getElementById('company').value;
-            const email = document.getElementById('email').value;
-            const products = document.getElementById('products').value;
-            const message = document.getElementById('message').value;
-
-            if (!company || !email) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // In a real application, you would send this data to your server
-            alert('Thank you for your inquiry! We\'ll get back to you within 24 hours.');
-            
-            // Clear the form
-            document.getElementById('company').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('products').value = '';
-            document.getElementById('message').value = '';
-        }
-
-        // Dosage calculator
-        function calculateDosage() {
-            const experience = document.getElementById('experience').value;
-            const method = document.getElementById('method').value;
-            const effect = document.getElementById('effect').value;
-            
-            if (!experience || !method || !effect) {
-                document.getElementById('dosage-result').style.display = 'none';
-                return;
-            }
-
-            let dosage = '';
-            let advice = '';
-
-            if (method === 'smoking') {
-                if (experience === 'beginner') {
-                    dosage = '1-2 puffs (2.5-5mg THC)';
-                    advice = 'Start slow and wait 15 minutes between puffs';
-                } else if (experience === 'intermediate') {
-                    dosage = '3-5 puffs (7.5-12.5mg THC)';
-                    advice = 'You can increase gradually as needed';
-                } else {
-                    dosage = '5-10 puffs (12.5-25mg THC)';
-                    advice = 'Adjust based on your tolerance and desired intensity';
-                }
-            } else if (method === 'edibles') {
-                if (experience === 'beginner') {
-                    dosage = '2.5-5mg THC';
-                    advice = 'Wait 2 hours before taking more - edibles take time!';
-                } else if (experience === 'intermediate') {
-                    dosage = '5-10mg THC';
-                    advice = 'Effects can last 4-8 hours, plan accordingly';
-                } else {
-                    dosage = '10-20mg THC';
-                    advice = 'Remember: you can always take more, but you can\'t take less';
-                }
-            } else if (method === 'tinctures') {
-                if (experience === 'beginner') {
-                    dosage = '1-2 drops (2.5-5mg THC)';
-                    advice = 'Hold under tongue for 30 seconds for faster absorption';
-                } else if (experience === 'intermediate') {
-                    dosage = '2-4 drops (5-10mg THC)';
-                    advice = 'Effects typically start within 15-45 minutes';
-                } else {
-                    dosage = '4-8 drops (10-20mg THC)';
-                    advice = 'Tinctures offer precise dosing control';
-                }
-            }
-
-            document.getElementById('dosage-result').innerHTML = `
-                <strong>Recommended Dose:</strong> ${dosage}<br>
-                <strong>Advice:</strong> ${advice}
-            `;
-            document.getElementById('dosage-result').style.display = 'block';
-        }
-
-        // Newsletter subscription
-        function subscribeNewsletter() {
-            const email = document.getElementById('newsletter-email').value;
-            if (!email) {
-                alert('Please enter your email address');
-                return;
-            }
-            alert('Thank you for subscribing! You\'ll receive our weekly cannabis insights soon.');
-            document.getElementById('newsletter-email').value = '';
-        }
-
-        // Education section toggle (for future expansion)
-        function toggleSection(section) {
-            alert(`${section.charAt(0).toUpperCase() + section.slice(1)} guide coming soon! Subscribe to our newsletter for updates.`);
-        }
-
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards and sections
-        document.querySelectorAll('.founder-card, .service-card, .edu-card, .testimonial-card, .portfolio-card').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
+      button.addEventListener('click', () => {
+        const expanded = card.classList.toggle('expanded');
+        detail.style.display = expanded ? 'grid' : 'none';
+        button.textContent = expanded ? 'Hide next steps' : 'See next steps';
+      });
+    });
+  </script>
+  <script src="assets/site.js" defer></script>
 </body>
 </html>
