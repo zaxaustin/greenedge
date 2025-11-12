@@ -1,25 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart Review System • GreenEdge</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../assets/styles.css" />
-</head>
-<body>
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  pageId="review-system"
+  title="Smart Review System • GreenEdge"
+  description="Walk through product verification, capture sensory notes, and earn loyalty rewards."
+>
   <header>
     <div class="container">
       <nav class="page-nav">
-        <a class="nav-brand" href="../index.html">GreenEdge</a>
-        <a href="../index.html#experiences">← Back to all experiences</a>
+        <a class="nav-brand" href="/">GreenEdge</a>
+        <a href="/#experiences">← Back to all experiences</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero">
       <div class="container">
         <h1>Scanner-guided cannabis reviews</h1>
@@ -87,7 +83,7 @@
           </div>
 
           <div data-step="1" hidden id="effectsStep">
-            <!-- Populated by inline script -->
+            <!-- Populated by script -->
           </div>
 
           <div data-step="2" hidden>
@@ -116,15 +112,31 @@
         </div>
       </div>
     </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container split-layout">
+        <div class="surface" data-animate>
+          <h3>API integrations</h3>
+          <p>Serverless functions keep the scanner fast and compliant.</p>
+          <ul>
+            <li><code>POST /.netlify/functions/reviews</code> · Submit new feedback or update flagged entries.</li>
+            <li><code>GET /.netlify/functions/strains</code> · Fetch dispensary inventory aligned with scan context.</li>
+            <li><code>POST /.netlify/functions/reservations</code> · Reserve tasting lab slots triggered from premium scans.</li>
+          </ul>
+        </div>
+        <div class="surface" data-animate>
+          <h3>Accessibility roadmap</h3>
+          <ul>
+            <li>Voice-assisted scanning for hands-free verification.</li>
+            <li>Dynamic contrast adjustments that follow WCAG 2.2 guidelines.</li>
+            <li>Haptic cues for critical warnings and compliant state changes.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
-    <p>© <span id="year"></span> GreenEdge Collective</p>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <script src="../assets/review-system.js" defer></script>
-</body>
-</html>
+  <Fragment slot="scripts">
+    <script src="/scripts/review-system.js" defer></script>
+  </Fragment>
+</BaseLayout>

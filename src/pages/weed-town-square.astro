@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  pageId="weed-town-square"
+  title="Weed Town Square • GreenEdge"
+  description="Drop daily takes, browse verified events, and stay current on NYC cannabis happenings."
+>
+  <header>
+    <div class="container">
+      <nav class="page-nav">
+        <a class="nav-brand" href="/">GreenEdge</a>
+        <a href="/#experiences">← Back to all experiences</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="container">
+        <h1>Weed Town Square</h1>
+        <p>
+          The civic heart of GreenEdge. Drop your daily hot take, browse verified events, and stay current on policy updates and
+          neighborhood happenings.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container square-grid">
+        <div class="prompt-card" data-animate>
+          <h2>Daily conversation starter</h2>
+          <p id="dailyPrompt"></p>
+          <button class="btn btn-secondary" id="shufflePrompt" type="button">Shuffle prompt</button>
+          <p style="color:var(--muted); font-size:0.9rem;">Tap to cycle through community-sourced questions.</p>
+        </div>
+
+        <div class="event-board" data-animate>
+          <h2>Upcoming happenings</h2>
+          <article>
+            <h3>Brooklyn High Brunch</h3>
+            <p>Sat · 11am · Crown Heights · Prix fixe infused tasting menu with mocktails.</p>
+          </article>
+          <article>
+            <h3>Hudson Lounge Residency</h3>
+            <p>Thu · 8pm · Pier 57 · Live DJs, curated flower bar, and waterfront meditation corner.</p>
+          </article>
+          <article>
+            <h3>Policy &amp; Pancakes</h3>
+            <p>Sun · 10am · Harlem · Learn about municipal licensing while sharing community breakfast.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container square-grid">
+        <div class="community-pulse" id="pulseFeed" data-animate></div>
+        <div class="poll-card" data-animate>
+          <h2>Vote on our next marquee event</h2>
+          <div id="pollOptions" class="community-pulse"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container split-layout">
+        <div class="surface" data-animate>
+          <h3>Share a neighborhood note</h3>
+          <form class="rail" id="noteForm">
+            <label>
+              <span>Handle</span>
+              <input type="text" name="handle" required placeholder="@bkchronicles" />
+            </label>
+            <label>
+              <span>Neighborhood</span>
+              <input type="text" name="neighborhood" required placeholder="Bed-Stuy" />
+            </label>
+            <label>
+              <span>What's happening?</span>
+              <textarea name="message" rows="3" required placeholder="Share the scoop..."></textarea>
+            </label>
+            <button class="btn btn-primary" type="submit">Post update</button>
+            <p id="noteStatus" class="meta" role="status"></p>
+          </form>
+        </div>
+        <div class="surface" data-animate>
+          <h3>Data transparency</h3>
+          <p>Announcements are cached on the CDN for fast reads while serverless APIs handle submissions.</p>
+          <ul>
+            <li><code>GET /.netlify/functions/reviews</code> · Surface trending comments to the square.</li>
+            <li><code>GET /.netlify/functions/strains</code> · Pair updates with verified strain availability.</li>
+            <li><code>POST /.netlify/functions/reviews</code> · Queue moderated community posts.</li>
+          </ul>
+          <p class="meta">Analytics from Plausible and PostHog respect user privacy with cookieless tracking and regional routing.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Fragment slot="scripts">
+    <script src="/scripts/town-square.js" defer></script>
+  </Fragment>
+</BaseLayout>

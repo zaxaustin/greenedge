@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-test-a11y:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Type and integration checks
+        run: npm run test
+
+      - name: Build site
+        run: npm run build
+
+      - name: Start preview server
+        run: npm run preview -- --host 0.0.0.0 --port 4321 &
+
+      - name: Wait for preview
+        run: npx wait-on http://127.0.0.1:4321
+
+      - name: Run accessibility audits
+        run: npm run accessibility
+
+      - name: Stop preview server
+        if: always()
+        run: kill $(jobs -p) || true

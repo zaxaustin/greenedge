@@ -1,25 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Harbor High Voyage Reviews • GreenEdge</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../assets/styles.css" />
-</head>
-<body>
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  pageId="boat-reviews"
+  title="Harbor High Voyage Reviews • GreenEdge"
+  description="Cruise the Hudson, savor curated cannabis pairings, and chronicle every nautical note."
+>
   <header>
     <div class="container">
       <nav class="page-nav">
-        <a class="nav-brand" href="../index.html">GreenEdge</a>
-        <a href="../index.html#experiences">← Back to all experiences</a>
+        <a class="nav-brand" href="/">GreenEdge</a>
+        <a href="/#experiences">← Back to all experiences</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="page-hero">
       <div class="container">
         <h1>Harbor High voyage review log</h1>
@@ -76,7 +72,7 @@
               <textarea name="notes" rows="3" placeholder="Anything we should know?"></textarea>
             </label>
             <button class="btn btn-primary" type="submit">Request invite</button>
-            <p id="reservationStatus" style="color:var(--accent);"></p>
+            <p id="reservationStatus" class="meta" role="status"></p>
           </form>
         </div>
       </div>
@@ -110,20 +106,28 @@
         </div>
       </div>
     </section>
+
+    <section class="section" style="padding-top:0;">
+      <div class="container split-layout">
+        <div class="surface" data-animate>
+          <h3>Reservation signals</h3>
+          <p>Automated capacity management keeps cruises intimate and compliant.</p>
+          <ul>
+            <li><code>GET /.netlify/functions/reservations</code> · Check availability and waitlists.</li>
+            <li><code>POST /.netlify/functions/reservations</code> · Confirm berths with accessibility accommodations.</li>
+            <li><code>POST /.netlify/functions/reviews</code> · Share tasting notes directly from the deck.</li>
+          </ul>
+        </div>
+        <div class="surface" data-animate>
+          <h3>Harbor insights</h3>
+          <p>Plausible metrics highlight top-performing voyages, while PostHog funnels surface repeat sailors and popular strains.</p>
+          <p class="meta">Insights refresh hourly in production; deploy previews anonymize data for QA.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
-    <p>© <span id="year"></span> GreenEdge Collective</p>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('reservationForm').addEventListener('submit', event => {
-      event.preventDefault();
-      const status = document.getElementById('reservationStatus');
-      status.textContent = 'Thank you! A crew member will confirm within 24 hours.';
-      event.target.reset();
-    });
-  </script>
-</body>
-</html>
+  <Fragment slot="scripts">
+    <script src="/scripts/boat-reviews.js" defer></script>
+  </Fragment>
+</BaseLayout>

@@ -1,0 +1,18 @@
+{
+  "defaults": {
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+    },
+    "wait": 1000
+  },
+  "urls": [
+    "http://127.0.0.1:4321/",
+    "http://127.0.0.1:4321/review-interface",
+    "http://127.0.0.1:4321/review-system",
+    "http://127.0.0.1:4321/boat-reviews",
+    "http://127.0.0.1:4321/weed-town-square",
+    "http://127.0.0.1:4321/growing-lab",
+    "http://127.0.0.1:4321/legal/terms",
+    "http://127.0.0.1:4321/legal/privacy"
+  ]
+}
