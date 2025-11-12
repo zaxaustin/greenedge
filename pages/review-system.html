@@ -35,10 +35,12 @@
         <div class="scanner-card" data-animate>
           <h2>1 · Authenticate your product</h2>
           <p>Use your phone camera to scan the QR or barcode on licensed New York cannabis packaging.</p>
+          <div class="status-pill status-loading" id="authStatus">Authenticating…</div>
           <div class="scan-viewport">
             <span>Position the code inside the frame</span>
           </div>
           <button class="btn btn-primary" id="scanButton">Start scan</button>
+          <div class="status-block status-info" id="scanStatus" hidden>Scan a package to view verified product details.</div>
           <ul>
             <li>Verify harvest and test dates before you consume.</li>
             <li>Flag suspicious packaging for rapid investigation.</li>
@@ -69,7 +71,7 @@
           </div>
 
           <div data-step="0">
-            <h3>How are you consuming NYC Diesel?</h3>
+            <h3>How are you consuming this batch?</h3>
             <div class="option-grid">
               <label>
                 <input type="radio" name="method" value="smoking" /> Smoking
@@ -102,6 +104,8 @@
             </div>
           </div>
 
+          <div class="status-block status-info" id="submissionStatus" role="status" aria-live="polite" hidden></div>
+
           <div style="display:flex; gap:12px;">
             <button class="btn btn-secondary" id="backStep" type="button">Back</button>
             <button class="btn btn-primary" id="nextStep" type="button">Next</button>
@@ -113,7 +117,19 @@
           <p>Thanks for closing the feedback loop. Your notes help thousands of New Yorkers choose responsibly.</p>
           <ul class="rewards-grid"></ul>
           <p>Keep scanning products within 48 hours for streak boosts and exclusive event invites.</p>
+          <div class="status-block status-info" id="moderationStatus" aria-live="polite" hidden></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--surface);">
+      <div class="container" data-animate>
+        <h2>Moderation tools</h2>
+        <p>
+          Reviews are screened before going public. Staff can use the moderation dashboard to approve, reject, or flag entries
+          that trip compliance alerts.
+        </p>
+        <a class="btn btn-secondary" href="./moderation-dashboard.html">Open moderation dashboard</a>
       </div>
     </section>
   </main>

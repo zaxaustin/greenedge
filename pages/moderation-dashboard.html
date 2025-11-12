@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moderation Dashboard • GreenEdge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav class="page-nav">
+        <a class="nav-brand" href="../index.html">GreenEdge</a>
+        <a href="./review-system.html">← Back to review system</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Moderation dashboard</h1>
+        <p>Approve, reject, or flag community reviews before they appear in strain listings.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" data-animate>
+        <div class="status-block status-info" id="moderationStatus" hidden aria-live="polite"></div>
+        <div class="moderation-panel">
+          <header class="panel-header">
+            <h2>Pending reviews</h2>
+            <button class="btn btn-secondary" id="refreshQueue" type="button">Refresh queue</button>
+          </header>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Submitted</th>
+                  <th>Strain</th>
+                  <th>User</th>
+                  <th>Rating</th>
+                  <th>Notes</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="moderationTable">
+                <tr>
+                  <td colspan="6" style="text-align:center; color:var(--muted);">Loading queue…</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> GreenEdge Collective</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="../assets/moderation-dashboard.js" defer></script>
+</body>
+</html>
