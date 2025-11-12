@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/styles.css" />
+  <script type="application/ld+json" id="strain-schema"></script>
 </head>
 <body>
   <header>
@@ -32,7 +33,7 @@
 
     <section class="section">
       <div class="container">
-        <div class="filter-bar">
+        <div class="filter-bar" data-animate>
           <div class="filter-group">
             <label for="search" class="sr-only">Search strains</label>
             <input id="search" type="search" placeholder="Search strain or dispensary" />
@@ -51,7 +52,39 @@
           </label>
         </div>
 
-        <div class="strain-grid" data-animate></div>
+        <div class="strain-grid" data-animate role="list" aria-live="polite"></div>
+        <div class="pagination-controls" data-animate>
+          <button class="button subtle" data-action="prev" type="button">Previous</button>
+          <span class="pagination-status" aria-live="polite"></span>
+          <button class="button" data-action="next" type="button">Next</button>
+        </div>
+
+        <div class="state-panels" data-animate>
+          <article class="surface panel" aria-labelledby="saved-filters-heading">
+            <header>
+              <h3 id="saved-filters-heading">Saved filters</h3>
+            </header>
+            <div id="saved-filters" class="panel-body">
+              <p class="muted">Adjust the controls above to personalize your feed. We’ll remember your choices next time.</p>
+            </div>
+          </article>
+          <article class="surface panel" aria-labelledby="favorites-heading">
+            <header>
+              <h3 id="favorites-heading">Favorites</h3>
+            </header>
+            <div id="favorites" class="panel-body">
+              <p class="muted">Tap the heart icon on any strain card to favorite it for quick recall.</p>
+            </div>
+          </article>
+          <article class="surface panel" aria-labelledby="comparison-heading">
+            <header>
+              <h3 id="comparison-heading">Comparison slate</h3>
+            </header>
+            <div id="comparison" class="panel-body">
+              <p class="muted">Use the balance icon to compare cannabinoid potency, pricing, and lab credentials side-by-side.</p>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
