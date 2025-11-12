@@ -8,12 +8,13 @@
     "build": "astro build",
     "preview": "astro preview",
     "test": "astro check",
-    "accessibility": "pa11y-ci"
+    "accessibility": "pa11y-ci --config pa11yci.json --chromium-flags='--no-sandbox --disable-setuid-sandbox'"
   },
   "dependencies": {
     "astro": "^4.8.6"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.5.4",
     "@types/node": "^20.11.30",
     "pa11y-ci": "^3.1.0",
     "typescript": "^5.4.5",
