@@ -882,3 +882,127 @@ label span {
 .notification.error {
   border-color: rgba(239, 68, 68, 0.6);
 }
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--muted);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  width: fit-content;
+}
+
+.status-pill.status-loading::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid rgba(148, 163, 184, 0.6);
+  border-top-color: transparent;
+  animation: spin 0.9s linear infinite;
+}
+
+.status-pill.status-ready {
+  background: rgba(76, 175, 80, 0.2);
+  border-color: rgba(76, 175, 80, 0.4);
+  color: #d7ffd9;
+}
+
+.status-pill.status-error {
+  background: rgba(244, 67, 54, 0.2);
+  border-color: rgba(244, 67, 54, 0.4);
+  color: #ffcdd2;
+}
+
+.status-block {
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(15, 23, 42, 0.85);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.status-block.status-ready {
+  background: rgba(76, 175, 80, 0.15);
+  border-color: rgba(76, 175, 80, 0.35);
+  color: #d7ffd9;
+}
+
+.status-block.status-info {
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.status-block.status-error {
+  background: rgba(244, 67, 54, 0.18);
+  border-color: rgba(244, 67, 54, 0.5);
+  color: #ffcdd2;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.moderation-panel {
+  background: rgba(12, 19, 36, 0.85);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  box-shadow: var(--shadow-soft);
+  padding: 28px;
+  display: grid;
+  gap: 20px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.table-wrapper th,
+.table-wrapper td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  text-align: left;
+}
+
+.table-wrapper tbody tr:hover {
+  background: rgba(76, 175, 80, 0.08);
+}
+
+.action-group {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 720px) {
+  .table-wrapper table {
+    min-width: 100%;
+  }
+
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .action-group {
+    flex-wrap: wrap;
+  }
+}
